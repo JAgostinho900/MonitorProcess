@@ -35,6 +35,8 @@ namespace MonitorProcess
                 {
                     Console.WriteLine("There isn't a process with the name inputed. Insert process name:");
                     processName = Console.ReadLine();
+
+                    // Repeat search for new processes that where opened
                     process = Process.GetProcesses().ToList().FirstOrDefault(x => x.ProcessName.Contains(processName) == true);
                 }
                 
@@ -43,7 +45,7 @@ namespace MonitorProcess
                 {
                     process.Kill();
 
-                    Console.WriteLine("The process has closed");
+                    Console.WriteLine("The process has been closed");
                     await Task.Delay(5000, stoppingToken);
                     System.Environment.Exit(0);
                 }
